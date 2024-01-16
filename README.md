@@ -2,7 +2,7 @@
 
 **Hello there, seeker of inspiration!** Welcome to the Motivational Quote Generator, your go-to source for positive vibes. 🌈✨
 
-## [Check out the Live Demo](https://incredible-narwhal-a9c8a6.netlify.app/)
+## [Check out the Live Demo](https://amazing-rabanadas-370927.netlify.app/)
 
 This mini full-stack project, hosted on Netlify, is all about spreading positivity and encouragement through random motivational quotes. 
 
