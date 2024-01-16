@@ -55,29 +55,3 @@ app.get('/quote', (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
-// Express is useful for handling HTTP requests. There are different types of requests.
-
-// 1) get requests: Their purpose is to retrieve data from the server
-// app.get('/', (req, res) => {
-//     res.send("Hello express");
-// });
-// (the difference between res.send and res.json is that res.send(data) sends a generic response with various types of data)
-
-//2) post requests: Their purpose is to send data to the server to create a new resource. It contains a request body, which is usually the data to be sent to the server, usually in JSON format. Can be used to create a new user account
-// app.post('/users', (req, res) => {
-//     // Create a new user using data in req.body
-//      const userData = req.body; // access the request body
-//     res.send('User created successfully');
-// });
-
-//3) Put request: Their purpose is to update data on the server. It contains a request body in JSON format
-// app.put('/users/:id', (req, res) => {
-//     userInfo = req.body;
-//     res.send('User info updated succesfuly');
-// });
-
-//4) Delete: Delete a resource on the server. It usually doesnt have a request body.
-// app.delete('/users/:id', (req, res) => {
-//     res.send('User deleted succesfully.')
-// })
