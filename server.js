@@ -1,9 +1,3 @@
-// Teaching time: express.js is a back end web application framework for building RESTful APIs with node.js . We can handle HTTP request/response handling with express
-
-//The steps to building an API follow a similar logic but can differ in syntax
-
-// Idea: user re, res for a user to add their own motivational quote on the data?
-
 //import the express library
 const express = require('express');
 // cors is a middleware to parse json in the request body
@@ -36,20 +30,25 @@ connection.connect((err) => {
 
 module.exports = connection;
 
-// Mock data for testing
-const motivationalQuotes = [
-    'The only way to do great work is to love what you do. - Steve Jobs',
-    'Believe you can and you\'re halfway there. -Theodore Roosevelt',
-    'Don\'t watch the clock; do what it does. Keep going. - Sam Levenson',
-];
-
 // Define a route for handling GET requests to the '/quote' endpoint
 app.get('/quote', (req, res) => {
     // Randomly select a quote from the array
-    const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+    const selectQuery = 'SELECT quote FROM quotes ORDER BY RAND() LIMIT 1';
 
-    // Send the selected quote as JSON in the response
-    res.json({ quote: randomQuote });
+    connection.query(selectQuery, (error, results) => {
+        if (error) {
+            console.error('Error executing query:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+
+        // Check if any quotes were found
+        if (results.length === 0) {
+            return res.status(404).json({ error: 'No quotes found' });
+        }
+
+        // Send the fetched quote as JSON in the response
+        res.json({ quote: results[0].quote });
+    });
 });
 
 // Start the server on the specified port
